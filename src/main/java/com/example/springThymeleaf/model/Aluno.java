@@ -20,5 +20,5 @@ public class Aluno {
 
     @ManyToOne
     @JoinColumn(name = "curso_id")
-    private String curso;
+    private Curso curso;
 }

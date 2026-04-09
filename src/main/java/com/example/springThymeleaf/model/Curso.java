@@ -20,6 +20,6 @@ public class Curso {
     private String nome;
     private double cargaHoraria;
 
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Aluno> alunos;
 }
