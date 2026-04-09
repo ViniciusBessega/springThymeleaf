@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+<div class="container">
+    <h1>Cursos</h1>
+    <a class="btn btn-sucess mb-3" href="/cursos/nova">Novo Curso</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Carga Horaria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="curso : ${cursos}">
+            <td th:text="$curso.id"></td>
+            <td th:text="$curso.nome"></td>
+            <td th:text="$curso.cargahoraria"></td>
+            <td>
+                <a th:href="@{'/cursos/editar' + $curso.id}" class="btn btn-primary btn-sm">Editar</a>
+                <a th:href="@{'/cursos/excluir/' + $curso.id}" class="btn btn-danger btn/sm"
+                    onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
