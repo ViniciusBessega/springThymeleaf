@@ -26,14 +26,14 @@ public class AlunoController {
     @GetMapping
     public String listarAlunos(Model model) {
         model.addAttribute("alunos", alunoService.listarTodos());
-        return "alunos/listar";
+        return "alunos/lista";
     }
 
     @GetMapping("/novo")
     public String novoAluno(Model model) {
         model.addAttribute("alunos", new Aluno());
         model.addAttribute("cursos", cursoService.listarTodos());
-        return "aluno/form";
+        return "alunos/form";
     }
 
     @GetMapping("/salvar")
@@ -43,7 +43,7 @@ public class AlunoController {
         }else {
             alunoService.salvar(aluno);
         }
-        return "redirect:/alunos";
+        return "alunos/form";
     }
 
     @GetMapping("/editar/{id}")
@@ -52,7 +52,7 @@ public class AlunoController {
                 .orElseThrow(() -> new RuntimeException("Produto Invalido: " + id));
         model.addAttribute("alunos", aluno);
         model.addAttribute("cursos", cursoService.listarTodos());
-        return "aluno/form";
+        return "alunos/form";
     }
 
     @GetMapping("/excluir/{id}")
