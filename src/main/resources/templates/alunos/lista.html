@@ -8,7 +8,7 @@
 <body class="p-4">
 <div class="container">
     <h1>Alunos</h1>
-    <a href="/alunos/novo" class="btn btn-success mb-3">Novo Produto</a>
+    <a href="/alunos/novo" class="btn btn-success mb-3">Novo Aluno</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -27,7 +27,7 @@
                 <td th:text="${aluno.curso != null ? aluno.curso.nome : 'Sem Curso'}"></td>
                 <td>
                     <a th:href="@{'/alunos/editar/' + ${aluno.id}}" class="btn btn-primary btn-sm">Editar</a>
-                    <a th:href="@{'/alunos/excluir/' + ${aluno.id}}" class="btn btn-danget btn-sm"
+                    <a th:href="@{'/alunos/excluir/' + ${aluno.id}}" class="btn btn-danger btn-sm"
                         onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                 </td>
         </tbody>

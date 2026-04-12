@@ -8,10 +8,7 @@ import com.example.springThymeleaf.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/alunos")
@@ -31,26 +28,26 @@ public class AlunoController {
 
     @GetMapping("/novo")
     public String novoAluno(Model model) {
-        model.addAttribute("alunos", new Aluno());
+        model.addAttribute("aluno", new Aluno());
         model.addAttribute("cursos", cursoService.listarTodos());
         return "alunos/form";
     }
 
-    @GetMapping("/salvar")
+    @PostMapping("/salvar")
     public String salvarAluno(@ModelAttribute Aluno aluno) {
         if (aluno.getId() != null) {
             alunoService.atualizar(aluno.getId(), aluno);
         }else {
             alunoService.salvar(aluno);
         }
-        return "alunos/form";
+        return "redirect:/alunos";
     }
 
     @GetMapping("/editar/{id}")
     public String editarAluno(@PathVariable Long id, Model model) {
         Aluno aluno = alunoService.buscarPorId(id)
                 .orElseThrow(() -> new RuntimeException("Produto Invalido: " + id));
-        model.addAttribute("alunos", aluno);
+        model.addAttribute("aluno", aluno);
         model.addAttribute("cursos", cursoService.listarTodos());
         return "alunos/form";
     }

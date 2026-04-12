@@ -7,7 +7,7 @@
 </head>
 <body class="p-4">
 <div class="container">
-    <h1 th:text="${aluno.id != null} ? 'Editar Aluno' : 'Novo Produto'"></h1>
+    <h1 th:text="${aluno.id != null} ? 'Editar Aluno' : 'Novo Aluno'"></h1>
     <form action="/alunos/salvar" method="post" th:object="${aluno}">
         <input type="hidden" th:field="*{id}">
         <div class="mb-3">

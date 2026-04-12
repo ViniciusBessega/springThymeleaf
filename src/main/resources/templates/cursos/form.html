@@ -8,7 +8,7 @@
 <body class="p-4">
 <div class="container">
     <h1 th:text="${curso.id != null} ? 'Editar Curso' : 'Nova Categoria'"></h1>
-    <form action="/categorias/salvar" method="post" th:object="${curso}">
+    <form action="/cursos/salvar" method="post" th:object="${curso}">
         <input type="hidden" th:field="*{id}">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>

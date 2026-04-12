@@ -33,6 +33,7 @@ public class CursoService {
     public Curso atualizar(Long id, Curso novoCurso){
         return cursoRepository.findById(id).map(cursoExistente -> {
             cursoExistente.setNome(novoCurso.getNome());
+            cursoExistente.setCargaHoraria(novoCurso.getCargaHoraria());
             return cursoRepository.save(cursoExistente);
         }).orElseThrow(() -> new RuntimeException("Categoria não encontrada!"));
     }

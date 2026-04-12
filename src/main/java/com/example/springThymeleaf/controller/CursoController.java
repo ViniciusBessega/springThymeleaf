@@ -25,8 +25,8 @@ public class CursoController {
 
     @GetMapping("/nova")
     public String novaCursos(Model model) {
-        model.addAttribute("cursos", cursoService.listarTodos());
-        return "cursos/nova";
+        model.addAttribute("curso", new Curso());
+        return "cursos/form";
     }
 
     @PostMapping("/salvar")
@@ -44,7 +44,7 @@ public class CursoController {
         Curso curso = cursoService.buscarPorId(id)
                 .orElseThrow(() -> new RuntimeException("Categoria invalida: " + id));
         model.addAttribute("curso", curso);
-        return "cursos/editar";
+        return "cursos/form";
     }
 
     @GetMapping("/excluir/{id}")
